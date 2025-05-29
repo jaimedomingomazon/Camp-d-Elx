@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium digital solutions for your business. We offer cutting-edge services to help you grow online.">
+    <meta name="keywords" content="digital services, web development, SEO, marketing, subscription">
+    <meta name="author" content="Digital Solutions Inc.">
+    <title>Camp d'Elx</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#062413',
+                        secondary: '#683411',
+                        dark: '#062413',
+                        light: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *{
+            font-family: unageo, sans-serif !important;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(6,36,19,0.9) 0%, rgba(15,66,0,0.8) 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .transition-smooth {
+            transition: all 0.3s ease;
+        }
+        .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s;
+            position: relative;
+        }
+        .hamburger-top,
+        .hamburger-middle,
+        .hamburger-bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            transform: rotate(0);
+            transition: all 0.5s;
+        }
+        .hamburger-middle {
+            transform: translateY(7px);
+        }
+        .hamburger-bottom {
+            transform: translateY(14px);
+        }
+        .open .hamburger-top {
+            transform: rotate(45deg) translateY(6px) translateX(6px);
+        }
+        .open .hamburger-middle {
+            display: none;
+        }
+        .open .hamburger-bottom {
+            transform: rotate(-45deg) translateY(6px) translateX(-6px);
+        }
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .lazy.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-dark bg-light">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-primary">Camp<span class="text-secondary"> d'Elx</span></a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-dark hover:text-primary transition-smooth font-medium">Inicio</a>
+                    <a href="#about" class="text-dark hover:text-primary transition-smooth font-medium">Sobre Nosotros</a>
+                    <a href="#services" class="text-dark hover:text-primary transition-smooth font-medium">Servicios</a>
+                    <a href="#subscription" class="text-dark hover:text-primary transition-smooth font-medium">Subscripción</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="hamburger focus:outline-none">
+                        <span class="hamburger-top"></span>
+                        <span class="hamburger-middle"></span>
+                        <span class="hamburger-bottom"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="menu" class="mobile-menu md:hidden bg-white">
+            <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:text-primary hover:bg-gray-50">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:text-primary hover:bg-gray-50">About Us</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:text-primary hover:bg-gray-50">Services</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:text-primary hover:bg-gray-50">Testimonials</a>
+                <a href="#subscription" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:text-primary hover:bg-gray-50">Subscription</a>
+                <div class="mt-4 px-3">
+                    <a href="#login" class="block w-full px-4 py-2 text-center rounded-md bg-primary text-white hover:bg-primary-dark transition-smooth">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 hero-gradient text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Descubre tus raíces</h1>
+                    <p class="text-xl md:text-2xl mb-8">Descubre nuestro producto local, cultivado con cariño para ti.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#subscription" class="px-8 py-3 bg-white text-primary rounded-lg font-bold hover:bg-gray-100 transition-smooth text-center">Únete</a>
+                        <a href="#services" class="px-8 py-3 border-2 border-white text-white rounded-lg font-bold hover:bg-white hover:text-primary transition-smooth text-center">Saber Más</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img 
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23ffffff'/%3E%3Cpath d='M300,200 L400,100 L500,200 L400,300 Z' fill='%234F46E5'/%3E%3Ccircle cx='200' cy='150' r='50' fill='%2310B981'/%3E%3C/svg%3E" 
+                        data-src="https://www.visitelche.com/wp-content/uploads/2017/07/IMG_8334-photo-full-1-1024x579.jpg" 
+                        alt="Digital transformation illustration" 
+                        class="w-full h-auto rounded-xl shadow-2xl lazy transition-smooth"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre Nosotros</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">En Camp d’Elx trabajamos por preservar y dar vida al paisaje agrícola tradicional de Elche. Impulsamos la huerta local, el saber campesino y la sostenibilidad mediante proyectos comunitarios, educativos y medioambientales.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <img 
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='350' viewBox='0 0 500 350'%3E%3Crect width='500' height='350' fill='%23f3f4f6'/%3E%3C/svg%3E" 
+                        data-src="https://www.visitelche.com/wp-content/uploads/2017/07/106C1157-2EA8-4089-9CEB-03465CAFF35BL0001photo-full-1024x768.jpg" 
+                        alt="Our team working together" 
+                        class="w-full h-auto rounded-lg shadow-lg lazy transition-smooth"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-6">Nuestra Misión</h3>
+                    <p class="text-gray-600 mb-6">Defender y revitalizar el camp d’Elx como motor de sostenibilidad, identidad y comunidad.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-md bg-primary text-white">
+                                    
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Sostenibilidad</h4>
+                                <p class="text-gray-600">Promovemos una relación respetuosa con la tierra y los recursos.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-md bg-primary text-white">
+                                    
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Comunidad</h4>
+                                <p class="text-gray-600">Apostamos por la participación activa y la colaboración local.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-md bg-primary text-white">
+                                    
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Territorio</h4>
+                                <p class="text-gray-600">Protegemos el valor cultural y ecológico del paisaje de Elche.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Servicios que ofrecemos</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">En Camp d’Elx trabajamos para revitalizar el entorno rural desde una perspectiva sostenible, social y educativa. Nuestros servicios están pensados para conectar a personas, saberes y territorio.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-smooth feature-card">
+                    <div class=>
+                        <i class=""></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Formación en agricultura ecológica</h3>
+                    <p class="text-gray-600 mb-4">Talleres y cursos para aprender a cultivar de forma sostenible y respetuosa con el entorno.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-smooth feature-card">
+                    <div class="">
+                        <i class=""></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Recuperación de tierras abandonadas</h3>
+                    <p class="text-gray-600 mb-4">Asesoramos y conectamos a personas dispuestas a reactivar parcelas en desuso del camp d’Elx.</p>
+                    </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-smooth feature-card">
+                    <div class="">
+                        <i class=""></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Apoyo a productores locales</h3>
+                    <p class="text-gray-600 mb-4">Acompañamiento técnico, logístico y comunicativo a agricultores y proyectos agroecológicos.</p>
+                    </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-smooth feature-card">
+                    <div class="">
+                        <i class=""></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sensibilización y divulgación</h3>
+                    <p class="text-gray-600 mb-4">Actividades y campañas para acercar a la ciudadanía a la cultura rural y al valor del territorio.
+
+</p>
+                    </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-smooth feature-card">
+                    <div class="">
+                        <i class=""></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Educación ambiental</h3>
+                    <p class="text-gray-600 mb-4">Programas y visitas guiadas para colegios, institutos y grupos sobre biodiversidad y patrimonio.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-smooth feature-card">
+                    <div class="">
+                        <i class=""></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Red de voluntariado y acción comunitaria</h3>
+                    <p class="text-gray-600 mb-4">Espacios para colaborar, participar y formar parte activa de la transformación del entorno.</p>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Subscription Section -->
+    <section id="subscription" class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Elige Tu Plan</h2>
+                <div class="w-20 h-1 bg-white mx-auto mb-6"></div>
+                <p class="text-lg max-w-3xl mx-auto">Forma parte de la comunidad Camp d’Elx y accede a experiencias exclusivas, recursos locales y beneficios únicos según el plan que elijas. ¡Conecta con el territorio de una forma auténtica!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white text-dark rounded-xl shadow-lg overflow-hidden">
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-bold">Básica</h3>
+                        <p class="text-gray-600">Ideal para quienes quieren iniciarse en el mundo del Camp d’Elx.</p>
+                    </div>
+                    <div class="px-8 py-6 border-b border-gray-200">
+                        <div class="flex items-baseline">
+                            <span class="text-4xl font-bold">5€</span>
+                            <span class="ml-1 text-gray-600">/mes</span>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                
+                                <span>Acceso al boletín mensual con noticias y eventos.s</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>1 invitación anual a una visita guiada por productores locales.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Descuento exclusivo del 10% en productos seleccionados.</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                
+                                <span>Envío trimestral de productos de temporada.</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                
+                                <span>Descuento del 15% en experiencias gastronómicas.</span>
+                            </li>
+                        </ul>
+                        <button class="mt-8 w-full px-6 py-3 border border-primary rounded-lg font-bold text-primary hover:bg-primary hover:text-white transition-smooth">Get Started</button>
+                    </div>
+                </div>
+                
+                <!-- Popular Plan -->
+                <div class="bg-white text-dark rounded-xl shadow-xl overflow-hidden transform scale-100">
+                    <div class="">
+                        
+                    </div>
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-bold">Comunitaria</h3>
+                        <p class="text-gray-600">Pensada para los que buscan un vínculo con el entorno rural.</p>
+                    </div>
+                    <div class="px-8 py-6 border-b border-gray-200">
+                        <div class="flex items-baseline">
+                            <span class="text-4xl font-bold">10€</span>
+                            <span class="ml-1 text-gray-600">/mes</span>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                
+                                <span>Todo lo de la Básica.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Acceso anticipado a talleres y catas.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Envío trimestral de productos de temporada.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Participación en jornadas colaborativas.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Descuento del 15% en experiencias gastronómicas.</span>
+                            </li>
+                        </ul>
+                        <button class="mt-8 w-full px-6 py-3 bg-primary rounded-lg font-bold text-white hover:bg-primary-dark transition-smooth">Get Started</button>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white text-dark rounded-xl shadow-lg overflow-hidden">
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-bold">Ambassador</h3>
+                        <p class="text-gray-600">Para quienes desean ser verdaderos embajadores del Camp d’Elx.</p>
+                    </div>
+                    <div class="px-8 py-6 border-b border-gray-200">
+                        <div class="flex items-baseline">
+                            <span class="text-4xl font-bold">15€</span>
+                            <span class="ml-1 text-gray-600">/mes</span>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                
+                                <span>Todo lo de la Comunitària.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Envío mensual de productos de proximidad.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Acceso exclusivo a rutas gastronómicas guiadas.</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Merchandising sostenible anual (bolsa + camiseta).</span>
+                            </li>
+                            <li class="flex items-center">
+                                
+                                <span>Invitación a un evento privado anual con productores.</span>
+                            </li>
+                        </ul>
+                        <button class="mt-8 w-full px-6 py-3 border border-primary rounded-lg font-bold text-primary hover:bg-primary hover:text-white transition-smooth">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Account Section -->
+    <section id="login" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <!-- Login Form -->
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-2xl font-bold mb-6">Inicia Sesión</h2>
+                        <form id="loginForm" class="space-y-6">
+                            <div>
+                                <label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+                                <input type="email" id="loginEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-smooth">
+                            </div>
+                            <div>
+                                <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                                <input type="password" id="loginPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-smooth">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <input id="rememberMe" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                    <label for="rememberMe" class="ml-2 block text-sm text-gray-700">Recuérdame</label>
+                                </div>
+                                <a href="#forgotPassword" class="text-sm text-primary hover:underline">¿Has olvidado tu contraseña?</a>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-primary rounded-lg font-bold text-white hover:bg-primary-dark transition-smooth">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Registration Form -->
+                    <div class="md:w-1/2 p-8 bg-gray-50">
+                        <h2 class="text-2xl font-bold mb-6">Crear Nueva Cuenta</h2>
+                        <form id="registerForm" class="space-y-6">
+                            <div>
+                                <label for="registerName" class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                                <input type="text" id="registerName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-smooth">
+                            </div>
+                            <div>
+                                <label for="registerEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+                                <input type="email" id="registerEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-smooth">
+                            </div>
+                            <div>
+                                <label for="registerPassword" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                                <input type="password" id="registerPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-smooth">
+                            </div>
+                            <div>
+                                <label for="registerConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirmar Contraseña</label>
+                                <input type="password" id="registerConfirmPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-smooth">
+                            </div>
+                            <div class="flex items-center">
+                                <input id="acceptTerms" type="checkbox" required class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                <label for="acceptTerms" class="ml-2 block text-sm text-gray-700">Acepto los <a href="#" class="text-primary hover:underline">Términos y Condiciones</a> y la <a href="#" class="text-primary hover:underline">Politica de Privacidad</a></label>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-primary rounded-lg font-bold text-white hover:bg-primary-dark transition-smooth">Registrar</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Forgot Password Modal -->
+                <div id="forgotPassword" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div class="bg-white rounded-xl p-8 max-w-md w-full">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-bold">Restablecer Contraseña</h3>
+                            <button id="closeForgotPassword" class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <p class="text-gray-600 mb-6">Introduce tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+                        <form id="forgotPasswordForm" class="space-y-4">
+                            <div>
+                                <label for="forgotEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+                                <input type="email" id="forgotEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-smooth">
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-primary rounded-lg font-bold text-white hover:bg-primary-dark transition-smooth">Enviar enlace de recuperación</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="text-2xl font-bold text-white">Camp<span class="text-secondary"> d'Elx</span></a>
+                    <p class="mt-4 text-gray-400">Descubre nuestro producto local, cultivado con cariño para ti.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-smooth"></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-smooth"></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-smooth"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-smooth"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-smooth">Inicio</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-smooth">Sobre Nosotros</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-smooth">Servicios</a></li>
+                        <li><a href="#subscription" class="text-gray-400 hover:text-white transition-smooth">Subscripción</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Servicios</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-smooth">Formación en agricultura ecológica</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-smooth">Recuperación de tierras abandonadas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-smooth">Apoyo a productores locales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-smooth">Sensibilización y divulgación</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-smooth">Educación ambiental</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-smooth">Red de voluntariado y acción comunitaria</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contáctanos</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            
+                            <span class="text-gray-400">Cualquier Lugar, Elche, Alicante 03202</span>
+                        </li>
+                        <li class="flex items-center">
+                            
+                            <span class="text-gray-400">+34 665 556 655</span>
+                        </li>
+                        <li class="flex items-center">
+                            
+                            <span class="text-gray-400">info@campdelx.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Camp d'Elx. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-smooth">Politica de privacidad</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-smooth">Términos y Condiciones</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-smooth">Uso de cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('menu');
+        
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // Forgot password modal
+        const forgotPasswordLink = document.querySelector('a[href="#forgotPassword"]');
+        const forgotPasswordModal = document.getElementById('forgotPassword');
+        const closeForgotPassword = document.getElementById('closeForgotPassword');
+        
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                forgotPasswordModal.classList.remove('hidden');
+            });
+        }
+        
+        if (closeForgotPassword) {
+            closeForgotPassword.addEventListener('click', () => {
+                forgotPasswordModal.classList.add('hidden');
+            });
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === forgotPasswordModal) {
+                forgotPasswordModal.classList.add('hidden');
+            }
+        });
+        
+        // Form submissions
+        document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the data to your backend
+            alert('Login functionality would be implemented here');
+        });
+        
+        document.getElementById('registerForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the data to your backend
+            alert('Registration functionality would be implemented here');
+        });
+        
+        document.getElementById('forgotPasswordForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the data to your backend
+            alert('Password reset link would be sent here');
+            forgotPasswordModal.classList.add('hidden');
+        });
+        
+        // Lazy loading images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy');
+            
+            const lazyLoad = (target) => {
+                const io = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            const src = img.getAttribute('data-src');
+                            
+                            if (src) {
+                                img.setAttribute('src', src);
+                                img.classList.add('loaded');
+                            }
+                            
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+                
+                io.observe(target);
+            };
+            
+            lazyImages.forEach(lazyLoad);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
